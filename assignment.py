@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 # from NAP_retailer import *
 import pandas as pd
 import numpy as np
@@ -13,12 +13,12 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-	return render_template('index.html')
+	return '<h1>This is Samyak Jain</h1> <br><h3>Greendeck Assignment</h3>'
 
 @app.route('/favicon.ico', methods=['GET', 'POST'])
 def dummy():
 	# print('dummy endpoint called')
-	return render_template('favicon.html')
+	return 'dummy function called'
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
