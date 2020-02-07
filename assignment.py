@@ -4,8 +4,10 @@ import pandas as pd
 import numpy as np
 
 df = pd.read_csv('nap_retailer.csv')
+# df['basket_fluctuation_price'] = df['basket_fluctuation_price']*100
 # print(df.discount_price.head())
-discount_grp_by_brand = pd.read_csv('discount_nap_retailer.csv')
+# discount_grp_by_brand = pd.read_csv('discount_nap_retailer.csv')
+print(df['basket_fluctuation_price'].head())
 
 app = Flask(__name__)
 
@@ -102,7 +104,33 @@ def expensive():
 		else:
 			return jsonify({'response':'Invalid Operands or operator selected'})
 
-# def 
+@app.route('/website_result', methods=['POST'])
+def website_result():
+	if request.method == 'POST':
+		req_json = request.json
+		op1 = req_json['operand1']
+		op2 = req_json['operand2']
+		op = req_json['operator']
+		
+
+		if op == '>' and op1 == 'discount_diff':
+			competition_list = list(df.loc[df['basket_fluctuation_price'] > op2]['_id'].unique())
+			list_len = len(competition_list)
+			return jsonify({'competition_discount_diff_list':competition_list, 'len':list_len})
+		elif op == '<' and op1 == 'discount_diff':
+			competition_list = list(df.loc[df['basket_fluctuation_price'] < op2]['_id'].unique())
+			list_len = len(competition_list)
+			return jsonify({'competition_discount_diff_list':competition_list, 'len':list_len})
+		elif op == '==' and op1 == 'discount_diff':
+			competition_list = list(df.loc[df['basket_fluctuation_price'] == op2]['_id'].unique())
+			list_len = len(competition_list)
+			return jsonify({'competition_discount_diff_list':competition_list, 'len':list_len})
+		elif op1 == 'competition':
+			competition_list = list(df.loc[df['comp_website_id'] == op2]['_id'].unique())
+			list_len = len(competition_list)
+			return jsonify({'competition_discount_diff_list':competition_list, 'len':list_len})
+		else:
+			return jsonify({'response':'Invalid Operands or operator selected'})
 
 if __name__ == '__main__':
-	app.run(debug=False)
+	app.run()
