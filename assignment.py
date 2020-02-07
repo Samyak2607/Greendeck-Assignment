@@ -17,7 +17,7 @@ def index():
 
 @app.route('/favicon.ico')
 def dummy():
-	print('dummy endpoint called')
+	# print('dummy endpoint called')
 	return 'dummy function called'
 
 @app.route('/test', methods=['GET', 'POST'])
