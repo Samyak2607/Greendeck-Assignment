@@ -13,8 +13,12 @@ app = Flask(__name__)
 def index():
 	return '<h1>This is Samyak Jain</h1> <br><h3>Greendeck Assignment</h3>'
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/favicon.ico', methods=['GET'])
+def dummy():
+	print('dummy endpoint called')
+	return 'dummy function called'
 
+@app.route('/test', methods=['GET', 'POST'])
 def test():
 	if request.method == 'GET':
 		return jsonify({'response':'Get request called by test'})
