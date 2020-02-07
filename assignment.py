@@ -9,7 +9,7 @@ discount_grp_by_brand = pd.read_csv('discount_nap_retailer.csv')
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
 	return '<h1>This is Samyak Jain</h1> <br><h3>Greendeck Assignment</h3>'
 
