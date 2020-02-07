@@ -13,10 +13,10 @@ app = Flask(__name__)
 def index():
 	return '<h1>This is Samyak Jain</h1> <br><h3>Greendeck Assignment</h3>'
 
-@app.route('/favicon.ico', methods=['GET'])
-def dummy():
-	print('dummy endpoint called')
-	return 'dummy function called'
+# @app.route('/favicon.ico', methods=['GET'])
+# def dummy():
+# 	print('dummy endpoint called')
+# 	return 'dummy function called'
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
