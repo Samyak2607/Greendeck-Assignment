@@ -12,12 +12,12 @@ df = pd.read_csv('nap_retailer.csv')
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
 	return '<h1>This is Samyak Jain</h1> <br><h3>Greendeck Assignment</h3>'
 
-@app.route('/favicon.ico', methods=['GET', 'POST'])
-def dummy():
+@app.route('/favicon.ico')
+def favicon():
 	# print('dummy endpoint called')
 	return send_from_directory(os.path.join(app.root_path, ''), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
