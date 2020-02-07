@@ -11,11 +11,11 @@ print(df['basket_fluctuation_price'].head())
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
 	return '<h1>This is Samyak Jain</h1> <br><h3>Greendeck Assignment</h3>'
 
-@app.route('/favicon.ico')
+@app.route('/favicon.ico', methods=['GET', 'POST'])
 def dummy():
 	# print('dummy endpoint called')
 	return 'dummy function called'
@@ -133,4 +133,4 @@ def website_result():
 			return jsonify({'response':'Invalid Operands or operator selected'})
 
 if __name__ == '__main__':
-	app.run()
+	app.run(debug = True)
