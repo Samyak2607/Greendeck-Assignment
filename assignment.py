@@ -45,18 +45,18 @@ def query():
 
 
 
-@app.route('/test', methods=['GET', 'POST'])
-def test():
-	if request.method == 'GET':
-		return jsonify({'response':'Get request called by test'})
-	elif request.method == 'POST':
-		req_json = request.json
-		name = req_json['name']
-		return jsonify({'response':'Hey '+name})
+# @app.route('/test', methods=['GET', 'POST'])
+# def test():
+# 	if request.method == 'GET':
+# 		return jsonify({'response':'Get request called by test'})
+# 	elif request.method == 'POST':
+# 		req_json = request.json
+# 		name = req_json['name']
+# 		return jsonify({'response':'Hey '+name})
 
 # Question 1
 # NAP products where discount is greater than n%
-@app.route('/discount_greater_than', methods=['POST'])
+# @app.route('/discount_greater_than', methods=['POST'])
 
 def discounted_products_list(filters):
 	op1 = filters['operand1']
@@ -73,7 +73,9 @@ def discounted_products_list(filters):
 		return jsonify({'discounted_products_list':response})
 
 
-@app.route('/product_count', methods=['POST'])
+# @app.route('/product_count', methods=['POST'])
+
+#Question 2
 
 def discounted_products_count(filters):
 	op1 = filters['operand1']
@@ -105,7 +107,8 @@ def discounted_products_count(filters):
 	else:
 		return jsonify({'response':'Invalid Operands or operator selected'})
 
-@app.route('/expensive', methods=['POST'])
+# @app.route('/expensive', methods=['POST'])
+# Question 3
 
 def expensive1():
 	exp_list = list(df.loc[df['expensive_id'] != '[0]']['expensive_id'])
@@ -123,7 +126,8 @@ def expensive(filters):
 	else:
 		return jsonify({'response':'Invalid Operands or operator selected'})
 
-@app.route('/website_result', methods=['POST'])
+# @app.route('/website_result', methods=['POST'])
+#Question 4
 
 def website_result(filters):
 	
